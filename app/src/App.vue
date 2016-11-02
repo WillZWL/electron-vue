@@ -1,6 +1,5 @@
 <style>
   @import url(https://fonts.googleapis.com/css?family=Lato:300);
-
   * {
     margin: 0;
     padding: 0;
@@ -19,9 +18,10 @@
       );
     background-position: center;
     display: flex;
-    font-family: Lato, Helvetica, sans-serif;
+    font-family: sans-serif, Lato, Helvetica;
     justify-content: center;
     text-align: center;
+    color: #73879C;
   }
 </style>
 
