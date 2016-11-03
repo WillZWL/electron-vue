@@ -4,12 +4,13 @@ import Electron from 'vue-electron'
 import Resource from 'vue-resource'
 import Router from 'vue-router'
 import VueAuth from '@websanova/vue-auth'
-global.$ = global.jQuery = require('jquery')
-// console.log($)
 
+// import CSS && JS
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import 'metismenu/dist/metisMenu.min.css'
+import './assets/css/custom.css'
+global.$ = global.jQuery = require('jquery')
 require('metismenu')
 require('bootstrap')
 require('./assets/js/custom.js')
@@ -24,7 +25,7 @@ Vue.use(Router)
 Vue.config.debug = true
 
 const router = new Router({
-  // scrollBehavior: () => ({ y: 0 }),
+  scrollBehavior: () => ({ y: 0 }),
   routes
 })
 
@@ -32,6 +33,7 @@ Vue.use(VueAuth, {
   router: router,
   rolesVar: 'roles'
 })
+
 // Http
 // Vue.http.options.root = 'http://vanguard/'
 
