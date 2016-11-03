@@ -8,7 +8,6 @@
     margin: 0 3px;
     vertical-align: bottom;
   }
-
   p { line-height: 24px; }
 </style>
 <template>

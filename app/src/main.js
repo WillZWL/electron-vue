@@ -1,15 +1,18 @@
 'use strict'
-
 import Vue from 'vue'
 import Electron from 'vue-electron'
 import Resource from 'vue-resource'
 import Router from 'vue-router'
 import VueAuth from '@websanova/vue-auth'
+global.$ = global.jQuery = require('jquery')
+// console.log($)
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-global.jQuery = global.$ = require('jquery')
-// require('bootstrap')
+import 'font-awesome/css/font-awesome.min.css'
+import 'metismenu/dist/metisMenu.min.css'
+require('metismenu')
+require('bootstrap')
+require('./assets/js/custom.js')
 
 import App from './App'
 import routes from './routes'
@@ -21,7 +24,7 @@ Vue.use(Router)
 Vue.config.debug = true
 
 const router = new Router({
-  scrollBehavior: () => ({ y: 0 }),
+  // scrollBehavior: () => ({ y: 0 }),
   routes
 })
 

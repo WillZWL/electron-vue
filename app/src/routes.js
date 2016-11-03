@@ -5,11 +5,6 @@ export default [
     component: require('components/LandingPageView')
   },
   {
-    path: '/test',
-    name: 'Test',
-    component: require('./components/TestView')
-  },
-  {
     path: '/register',
     name: 'register-page',
     component: require('./components/RegisterPageView')
@@ -18,5 +13,10 @@ export default [
     path: '/login',
     name: 'login-page',
     component: require('./components/LoginPageView')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard-page',
+    component: require('./components/DashboardView')
   }
 ]
