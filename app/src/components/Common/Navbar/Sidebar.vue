@@ -31,23 +31,10 @@
 .sidebar .nav-third-level li a {
   padding-left: 52px;
 }
-@media (min-width: 768px) {
-  .sidebar {
-  z-index: 1;
-  position: absolute;
-  width: 250px;
-  margin-top: 51px;
-  }
-  .navbar-top-links .dropdown-messages,
-  .navbar-top-links .dropdown-tasks,
-  .navbar-top-links .dropdown-alerts {
-  margin-left: auto;
-  }
-}
 </style>
 <template>
   <div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
+    <div class="sidebar-nav navbar-collapse collapse">
       <ul class="nav" id="side-menu">
         <li class="sidebar-search">
           <div class="input-group custom-search-form">
@@ -65,16 +52,16 @@
         </li>
         <li>
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Order<span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
+          <ul class="nav nav-second-level collapse">
             <li>
-              <a href="/order-fulfilment">Order Fulfilment</a>
+              <router-link to="/order-fulfilment">Order Fulfilment</router-link>
             </li>
           </ul>
           <!-- /.nav-second-level -->
         </li>
         <li>
           <a href="#"><i class="fa fa-sitemap fa-fw"></i>Product<span class="fa arrow"></span></a>
-          <ul class="nav nav-second-level">
+          <ul class="nav nav-second-level collapse">
             <li>
               <a href="#">Price Overview</a>
             </li>
@@ -83,7 +70,7 @@
             </li>
             <li>
               <a href="#">Upload Tool<span class="fa arrow"></span></a>
-              <ul class="nav nav-third-level">
+              <ul class="nav nav-third-level collapse">
                 <li>
                   <a href="#">Upload Product</a>
                 </li>
@@ -91,13 +78,54 @@
                   <a href="#">Upload Marketplace SKU Mapping</a>
                 </li>
               </ul>
-              <!-- /.nav-third-level -->
             </li>
           </ul>
-          <!-- /.nav-second-level -->
         </li>
       </ul>
     </div>
-    <!-- /.sidebar-collapse -->
   </div>
 </template>
+<script>
+  var $ = window.$ = window.jQuery = require('jquery')
+  export default {
+    created () {
+      $(function () {
+        $('#side-menu').metisMenu()
+      })
+
+      $(function () {
+        $(window).bind('load resize', function () {
+          var topOffset = 50
+          var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width
+          if (width < 768) {
+            $('div.navbar-collapse').addClass('collapse')
+            topOffset = 100
+          } else {
+            $('div.navbar-collapse').removeClass('collapse')
+          }
+
+          var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1
+          height = height - topOffset
+          if (height < 1) height = 1
+          if (height > topOffset) {
+            $('#page-wrapper').css('min-height', (height) + 'px')
+          }
+        })
+
+        var url = window.location
+
+        var element = $('ul.nav a').filter(function () {
+          return this.href === url
+        }).addClass('active').parent()
+
+        while (true) {
+          if (element.is('li')) {
+            element = element.parent().addClass('in').parent()
+          } else {
+            break
+          }
+        }
+      })
+    }
+  }
+</script>

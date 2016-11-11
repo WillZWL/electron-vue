@@ -18,5 +18,10 @@ export default [
     path: '/dashboard',
     name: 'dashboard-page',
     component: require('./components/DashboardView')
+  },
+  {
+    path: '/order-fulfilment',
+    name: 'order-fulfilment',
+    component: require('./components/OrderFulfillmentView')
   }
 ]
